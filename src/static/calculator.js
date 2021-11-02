@@ -7,24 +7,32 @@ class Calculator {
   }
 
   eval(value) {
-    const numberRex = /[\+\-\*\/]/;
+    const numberRex = /[+\-*/]/;
     this.operands = value.split(numberRex);
     const opsList = ["+", "-", "*", "/"];
     this.operators = value.split("").filter((char) => opsList.includes(char));
-    let opnds = this.operands.slice(1);
     const init = parseFloat(this.operands[0]);
-    let optors = this.operators;
-    const result = opnds.reduce((acc, str) => {
+    let opnds = this.operands.slice(1);
+    let optors = [...this.operators];
+    let result = init;
+    for (let k = 0; k < opnds.length; k++) {
       const currOp = optors[0];
-      let value = parseFloat(str);
+      let value = parseFloat(opnds[k]);
       optors = optors.slice(1);
-      if (currOp === "+") acc += value;
-      if (currOp === "*") acc *= value;
-      if (currOp === "-") acc -= value;
-      if (currOp === "/") acc /= value;
-      // console.log("val, acc", value, acc);
-      return acc;
-    }, init);
+      if (currOp === "+") result += value;
+      if (currOp === "*") result *= value;
+      if (currOp === "-") result -= value;
+      if (currOp === "/") {
+        if (value === 0) {
+          result = null;
+          this.value = result;
+          this.display = "division by zero";
+          return result;
+        } else {
+          result /= value;
+        }
+      }
+    }
     this.value = result;
     this.display = result.toString();
     return result;

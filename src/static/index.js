@@ -43,6 +43,7 @@ function processKeyboard(event) {
 }
 
 function computeValue(val) {
+  val = val.replace(/\s/g, "");
   const aritExp = /^\d+(\.\d*)?([+\-*/]\d+(\.\d*)?)*$/;
   if (aritExp.test(val)) {
     calc.eval(val);
