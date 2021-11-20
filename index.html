@@ -10,30 +10,33 @@
 <body>
   <div class="container">
     <div class="header">
-      <button class="clear">C</button>
       <input type="text" class="display" id="screen">
     </div>
     <div class="keys">
-      <div class="constants">
-        <button id="zero">0 </button>
-        <button id="one">1 </button>
-        <button id="two">2 </button>
-        <button id="three">3 </button>
-        <button id="four">4 </button>
-        <button id="five">5 </button>
-        <button id="six">6 </button>
-        <button id="seven">7 </button>
-        <button id="eight">8 </button>
-        <button id="nine">9 </button>
-        <button id="dec">. </button>
-        <button id="equals">= </button>
-      </div>
-      <div class="operators">
-        <button id="plus">+</button>
-        <button id="minus">-</button>
-        <button id="mult">*</button>
-        <button id="div">/</button>
-      </div>
+      <button id ="clear" class="memory">clear</button>
+      <button id ="store" class="memory">store</button>
+      <button id ="read" class="memory">read</button>
+      <button id ="bsp" class="memory">&#8592</button>
+      <button id="zero" class="val">0 </button>
+      <button id="one" class="val">1 </button>
+      <button id="two" class="val">2 </button>
+      <button id="three" class="val">3 </button>
+      <button id="four" class="val">4 </button>
+      <button id="five" class="val">5 </button>
+      <button id="six" class="val">6 </button>
+      <button id="seven" class="val">7 </button>
+      <button id="eight" class="val">8 </button>
+      <button id="nine" class="val">9 </button>
+      <button id="dec" class="val">. </button>
+      <button id="equals" class="group">= </button>
+      <button id="lpar" class="group">(</button>
+      <button id='rpar' class="group">)</button>
+      <button id="plus" class="operator">+</button>
+      <button id="minus" class="operator">-</button>
+      <button id="mult" class="operator">*</button>
+      <button id="div" class="operator">/</button>
+      <!-- <button id= "exp" class="operator">x<sup>y</sup></button>
+      <button id= "log" class="operator">log</button> -->
     </div>
   </div>
   <script src="./src/static/index.js" type="module"></script>

@@ -8,52 +8,65 @@ body {
   padding: 20px;
   border: 1px solid black;
   height: 100vh;
-  background-color: beige;
+  background-color: wheat;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 250px;
+  justify-content: space-around;
+  width: 40%;
   margin: auto;
   border: 1px solid black;
-  background-color: cadetblue;
+  background-color: #300000;
 }
 
 /* input text */
-.container .display {
-  margin: 5px 0 5px 5px;
+.container .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.container input {
+  margin: 10px;
   padding: 5px;
-  width: calc(100% - 70px);
+  width: 70%;
   text-align: right;
   border-radius: 5px;
   border: 1px solid black;
 }
 
+.container .keys {
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
 .container button {
-  width: 45px;
+  width: 60px;
   padding: 5px;
   margin: 5px;
   border-radius: 5px;
   border: 1px solid black;
 }
 
-.keys .constants button {
-  background-color: lightsteelblue;
+.keys button {
+  background-color: gray;
 }
 
-.keys .operators button {
-  background-color: grey;
+.keys button.memory {
+  background-color: wheat;
+  color: black;
+}
+
+.keys button.val {
+  background-color: whitesmoke;
+  color: #400000;
+}
+
+.keys button.operator {
+  background-color: #400000;
   color: whitesmoke;
-}
-
-.container .keys {
-  display: flex;
-  flex-direction: row;
-}
-
-.keys .operators {
-  display: flex;
-  flex-direction: column;
+  border: 1px solid gray;
 }
