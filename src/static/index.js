@@ -1,4 +1,7 @@
 import { Calculator } from "./calculator.js";
+import { parseE } from "./parser.js";
+
+window.parseE = parseE;
 
 // for debugging and experimenting
 window.Calculator = Calculator;

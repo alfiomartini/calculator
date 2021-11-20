@@ -15,6 +15,9 @@ class Calculator {
     } else {
       result = evalExp(exprTree);
     }
+    // in case there is a division by zero
+    result = result == "Infinity" ? "division by zero" : result;
+    result = result == "NaN" ? "Not a number" : result;
     this.value = result;
     this.display = result.toString();
     return result;

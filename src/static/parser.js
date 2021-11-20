@@ -6,7 +6,7 @@
 //  E -> (E)T | number T
 // T -> op E | ''
 
-function parseE(exprStr) {
+export function parseE(exprStr) {
   exprStr = skipSpaces(exprStr);
   let match = /^[+-]?((\d+(\.\d*)?)|\.\d+)/.exec(exprStr);
   if (match) {

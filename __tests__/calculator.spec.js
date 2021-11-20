@@ -40,7 +40,7 @@ describe("Testing Calculator", () => {
   ];
 
   it("1 - Check that 5 x 5 = 25", async () => {
-    const clear = await page.$(".clear");
+    const clear = await page.$("#clear");
     const five = await page.$("#five");
     const mult = await page.$("#mult");
     const equals = await page.$("#equals");
@@ -54,7 +54,7 @@ describe("Testing Calculator", () => {
   });
 
   it("2 - Check that 100+50/30 = 5", async () => {
-    const clear = await page.$(".clear");
+    const clear = await page.$("#clear");
     const five = await page.$("#five");
     const zero = await page.$("#zero");
     const div = await page.$("#div");
@@ -78,7 +78,7 @@ describe("Testing Calculator", () => {
   });
 
   it("4 - Check that 1.75 + 1.25 - 1.75/1.25 - 10 = -9", async () => {
-    const clear = await page.$(".clear");
+    const clear = await page.$("#clear");
     const one = await page.$("#one");
     const two = await page.$("#two");
     const zero = await page.$("#zero");
@@ -129,7 +129,7 @@ describe("Testing Calculator", () => {
   });
 
   it("5 - Check that 30*10/0 = division by zero", async () => {
-    const clear = await page.$(".clear");
+    const clear = await page.$("#clear");
     const three = await page.$("#three");
     const one = await page.$("#one");
     const zero = await page.$("#zero");
