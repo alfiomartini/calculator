@@ -58,6 +58,15 @@ function processKeyboard(event) {
     input.focus();
     return;
   }
+  if (id === "store") {
+    setState({ memory: input.value });
+    return;
+  }
+  if (id === "read") {
+    let value = input.value;
+    input.value = value + state.memory;
+    return;
+  }
   let text = input.value;
   input.value = text + innerText;
   input.focus();
