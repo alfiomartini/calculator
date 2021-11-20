@@ -2,6 +2,7 @@
 // E -> (E) | number | E op E
 // op => + | / | + | -
 
+// this grammar assumes operators are right associative
 //  Removing left recursion from above
 //  E -> (E)T | number T
 // T -> op E | ''
