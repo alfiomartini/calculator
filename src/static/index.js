@@ -5,11 +5,10 @@ window.Calculator = Calculator;
 
 const calc = new Calculator();
 
-const header = document.querySelector(".header");
 const keys = document.querySelector(".keys");
 
-const clear = header.querySelector("#clear");
-const input = header.querySelector("input");
+const clear = document.getElementById("clear");
+const input = document.getElementById("screen");
 clearInput();
 
 keys.addEventListener("click", processKeyboard);
@@ -40,7 +39,6 @@ function processInput(event) {
 }
 
 function processKeyboard(event) {
-  console.log(event.target);
   const { id, innerText } = event.target;
   if (id === "equals") {
     const value = input.value;

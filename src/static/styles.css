@@ -13,7 +13,7 @@ body {
 
 .container {
   justify-content: space-around;
-  width: 40%;
+  width: 35%;
   margin: auto;
   border: 1px solid black;
   background-color: #300000;
@@ -69,4 +69,48 @@ body {
   background-color: #400000;
   color: whitesmoke;
   border: 1px solid gray;
+}
+
+/* media queries */
+
+@media screen and (max-width: 1000px) {
+  .container {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .container {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .container {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .container {
+    width: 55%;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .container {
+    width: 65%;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .container {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    width: 90%;
+  }
 }
