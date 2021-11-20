@@ -71,6 +71,6 @@ export function parsePrg(text) {
     return exprTree;
   } catch (error) {
     console.log(error.message);
-    return error;
+    return { error: error.message };
   }
 }

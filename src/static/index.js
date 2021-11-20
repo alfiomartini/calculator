@@ -43,13 +43,7 @@ function processKeyboard(event) {
 }
 
 function computeValue(val) {
-  val = val.replace(/\s/g, "");
-  const aritExp = /^\d+(\.\d*)?([+\-*/]\d+(\.\d*)?)*$/;
-  if (aritExp.test(val)) {
-    calc.eval(val);
-    input.value = calc.display;
-  } else {
-    input.value = "invalid exp";
-  }
-  // console.log("screen", document.querySelector("#screen").value);
+  let result = calc.eval(val);
+  console.log("result", result);
+  input.value = calc.display;
 }
