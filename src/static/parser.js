@@ -8,8 +8,9 @@
 
 function parseE(exprStr) {
   exprStr = skipSpaces(exprStr);
-  let match = /^\d+/.exec(exprStr);
+  let match = /^[+-]?((\d+(\.\d*)?)|\.\d+)/.exec(exprStr);
   if (match) {
+    // console.log("match", match);
     let exprTree = { type: "number", value: match[0] };
     exprStr = exprStr.slice(match[0].length);
     return parseT(exprTree, exprStr);
