@@ -26,6 +26,7 @@ function parseE(exprStr) {
     exprStr = result.exprStr.slice(1);
     return parseT(result.exprTree, exprStr);
   }
+  throw new SyntaxError("Invalid expression");
 }
 
 function parseT(exprTree, exprStr) {
@@ -67,10 +68,13 @@ function skipSpaces(text) {
 
 export function parsePrg(text) {
   try {
-    const exprTree = parseE(text).exprTree;
+    let { exprTree, exprStr } = parseE(text);
+    exprStr = skipSpaces(exprStr);
+    if (exprStr.length > 0) {
+      throw new SyntaxError(`Unexpected text at the end: "${exprStr}"`);
+    }
     return exprTree;
   } catch (error) {
-    console.log(error.message);
     return { error: error.message };
   }
 }
