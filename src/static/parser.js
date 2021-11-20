@@ -64,3 +64,13 @@ function skipSpaces(text) {
     return text;
   }
 }
+
+export function parsePrg(text) {
+  try {
+    const exprTree = parseE(text).exprTree;
+    return exprTree;
+  } catch (error) {
+    console.log(error.message);
+    return error;
+  }
+}
