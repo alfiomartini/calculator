@@ -1,7 +1,8 @@
 {
-  "name": "exercise33",
+  "name": "calculator",
+  "homepage": "https://alfiomartini.github.io/calculator",
   "version": "1.0.0",
-  "description": "",
+  "description": "An Arithmetic Calculator",
   "main": "index.js",
   "jest": {
     "preset": "jest-puppeteer"
