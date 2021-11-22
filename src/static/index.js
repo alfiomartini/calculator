@@ -63,11 +63,13 @@ function processKeyboard(event) {
   }
   if (id === "store") {
     setState({ memory: input.value });
+    input.focus();
     return;
   }
   if (id === "read") {
     let value = input.value;
     input.value = value + state.memory;
+    input.focus();
     return;
   }
   let text = input.value;
