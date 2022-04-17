@@ -16,6 +16,8 @@
  * https://www.npmjs.com/package/jest-environment-puppeteer/v/1.0.0#configure-eslint
  */
 
+// run with npm test
+
 describe("Testing Calculator", () => {
   beforeAll(async () => {
     await page.goto("http://localhost:5000");
@@ -25,16 +27,16 @@ describe("Testing Calculator", () => {
   const values = [
     { exp: "5*5", value: "25" },
     {
-      exp: "100+50/30",
+      exp: "(100+50)/30",
       value: "5",
     },
     {
-      exp: "15*200/15",
+      exp: "(15*200)/15",
       value: "200",
     },
     { exp: "1.75 + 1.25 - 1.75/1.25 - 10", value: "-9" },
     {
-      exp: "30*10/0",
+      exp: "(30*10)/0",
       value: "division by zero",
     },
   ];
@@ -53,8 +55,10 @@ describe("Testing Calculator", () => {
     expect(result).toMatch(values[0].value);
   });
 
-  it("2 - Check that 100+50/30 = 5", async () => {
+  it("2 - Check that (100+50)/30 = 5", async () => {
     const clear = await page.$("#clear");
+    const lpar = await page.$("#lpar");
+    const rpar = await page.$("#rpar");
     const five = await page.$("#five");
     const zero = await page.$("#zero");
     const div = await page.$("#div");
@@ -63,12 +67,14 @@ describe("Testing Calculator", () => {
     const three = await page.$("#three");
     const equals = await page.$("#equals");
     await clear.click();
+    await lpar.click();
     await one.click();
     await zero.click();
     await zero.click();
     await plus.click();
     await five.click();
     await zero.click();
+    await rpar.click();
     await div.click();
     await three.click();
     await zero.click();
@@ -77,8 +83,44 @@ describe("Testing Calculator", () => {
     expect(result).toMatch(values[1].value);
   });
 
-  it("4 - Check that 1.75 + 1.25 - 1.75/1.25 - 10 = -9", async () => {
+  it("3 - Check that (15*200)/15", async () => {
     const clear = await page.$("#clear");
+    const lpar = await page.$("#lpar");
+    const rpar = await page.$("#rpar");
+    const one = await page.$("#one");
+    const zero = await page.$("#zero");
+    const five = await page.$("#five");
+    const two = await page.$("#two");
+    const mult = await page.$("#mult");
+    const div = await page.$("#div");
+    const equals = await page.$("#equals");
+
+    await clear.click();
+
+    await lpar.click();
+    await one.click();
+    await five.click();
+
+    await mult.click();
+
+    await two.click();
+    await zero.click();
+    await zero.click();
+    await rpar.click();
+
+    await div.click();
+
+    await one.click();
+    await five.click();
+
+    await equals.click();
+    const result = await page.$eval("#screen", (e) => e.value);
+    expect(result).toMatch(values[2].value);
+  });
+  it("4 - Check that (((1.75 + 1.25) - 1.75)/1.25) - 10 = -9", async () => {
+    const clear = await page.$("#clear");
+    const lpar = await page.$("#lpar");
+    const rpar = await page.$("#rpar");
     const one = await page.$("#one");
     const two = await page.$("#two");
     const zero = await page.$("#zero");
@@ -92,6 +134,9 @@ describe("Testing Calculator", () => {
 
     await clear.click();
 
+    await lpar.click();
+    await lpar.click();
+    await lpar.click();
     await one.click();
     await dec.click();
     await seven.click();
@@ -103,6 +148,7 @@ describe("Testing Calculator", () => {
     await dec.click();
     await two.click();
     await five.click();
+    await rpar.click();
 
     await minus.click();
 
@@ -110,6 +156,7 @@ describe("Testing Calculator", () => {
     await dec.click();
     await seven.click();
     await five.click();
+    await rpar.click();
 
     await div.click();
 
@@ -117,6 +164,7 @@ describe("Testing Calculator", () => {
     await dec.click();
     await two.click();
     await five.click();
+    await rpar.click();
 
     await minus.click();
 
@@ -128,7 +176,9 @@ describe("Testing Calculator", () => {
     expect(result).toMatch(values[3].value);
   });
 
-  it("5 - Check that 30*10/0 = division by zero", async () => {
+  it("5 - Check that 30*(10/0) = division by zero", async () => {
+    const lpar = await page.$("#lpar");
+    const rpar = await page.$("#rpar");
     const clear = await page.$("#clear");
     const three = await page.$("#three");
     const one = await page.$("#one");
@@ -144,12 +194,14 @@ describe("Testing Calculator", () => {
 
     await mult.click();
 
+    await lpar.click();
     await one.click();
     await zero.click();
 
     await div.click();
 
     await zero.click();
+    await rpar.click();
     await equals.click();
 
     const result = await page.$eval("#screen", (elm) => elm.value);
